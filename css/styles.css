@@ -1,3 +1,10 @@
+h1 > span {
+  color: #ccc;
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
 body {
   font-size: 16px;
   font-family: Verdana, sans-serif;
