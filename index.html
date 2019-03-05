@@ -29,7 +29,7 @@
 
         function TodoItem(props) {
           return (
-            <li key={props.todo.id}>
+            <li>
               <label>
                 <input type="checkbox"
                   checked={props.todo.isDone}
@@ -149,6 +149,16 @@
             this.setState({
               item: e.target.value
             });
+          }
+
+          componentDidUpdate() {
+            localStorage.setItem('todos', JSON.stringify(this.state.todos));
+          }
+
+          componentDidMount() {
+            this.setState({
+              todos: JSON.parse(localStorage.getItem('todos')) || []
+            })
           }
 
           render() {
