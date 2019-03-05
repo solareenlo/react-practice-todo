@@ -54,14 +54,25 @@
           );
         }
 
+        function TodoForm(props) {
+          return (
+            <form>
+              <input type="text" value={props.item} onChange={props.updateItem}/>
+              <input type="submit" value="Add"/>
+            </form>
+          );
+        }
+
         class App extends React.Component {
           constructor() {
             super();
             this.state = {
-              todos: todos
+              todos: todos,
+              item: ''
             };
             this.checkTodo = this.checkTodo.bind(this);
             this.deleteTodo = this.deleteTodo.bind(this);
+            this.updateItem = this.updateItem.bind(this);
           }
 
           checkTodo(todo) {
@@ -89,6 +100,12 @@
             });
           }
 
+          updateItem(e) {
+            this.setState({
+              item: e.target.value
+            });
+          }
+
           render() {
             return (
               <div className="container">
@@ -97,6 +114,10 @@
                   todos={this.state.todos}
                   checkTodo={this.checkTodo}
                   deleteTodo={this.deleteTodo}
+                />
+                <TodoForm
+                  item={this.state.item}
+                  updateItem={this.updateItem}
                 />
               </div>
             );
